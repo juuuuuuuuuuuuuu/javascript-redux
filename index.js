@@ -13,6 +13,11 @@ function reducer(state, action) {
 
 const store = createStore(reducer);
 
-dispatchEvent({ type: 'abc' });
+function update() {
+  console.log(store.getState());
+}
 
-console.log(store.getState());
+store.subsribe(update);
+
+// 리덕스 바깥쪽에서 액션을 호출할 수 있다.
+store.dispatch({ type: 'abc' });
